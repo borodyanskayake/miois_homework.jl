@@ -1,7 +1,9 @@
 export getdigits, touppercase, firstnorm, secondnorm, infnorm, isleap, chesscolor
 
 function getdigits(a)
-    return 0
+    digits_mass = Array{Int64}(undef, 1, len(a))
+    push!()
+    return digits_mass;
 end
 
 function touppercase(str_)
@@ -29,7 +31,13 @@ function infnorm(vec_::AbstractMatrix{<:Number})
 end
 
 function isleap(year)
-    return false;
+    if year % 4 == 0 && year % 100 != 0
+        return true;
+    elseif year % 400 == 0
+        return true;
+    else
+        return false;
+    end
 end
 
 function chesscolor(cell1, cell2)
