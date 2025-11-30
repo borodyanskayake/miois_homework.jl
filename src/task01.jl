@@ -53,7 +53,7 @@ function firstnorm(vec_::AbstractMatrix{<:Number})
     for j in n
         sum = 0
         for i in m
-            sum += vec_[i,j]
+            sum += abs(vec_[i,j])
         end
         if sum > norm1_mat
             norm1_mat = sum
@@ -68,7 +68,7 @@ function infnorm(vec_::AbstractMatrix{<:Number})
     for i in m
         sum = 0
         for j in n
-            sum += vec_[i,j]
+            sum += abs(vec_[i,j])
         end
         if sum > norminf_mat
             norminf_mat = sum
