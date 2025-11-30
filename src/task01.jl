@@ -48,11 +48,33 @@ function infnorm(vec_::AbstractVector{<:Number})
 end
 
 function firstnorm(vec_::AbstractMatrix{<:Number})
-    return 0;
+    norm1_mat = 0
+    m, n = size(vec_)
+    for j in n
+        sum = 0
+        for i in m
+            sum += vec_[i,j]
+        end
+        if sum > norm1_mat
+            norm1_mat = sum
+        end
+    end
+    return norm1_mat;
 end
 
 function infnorm(vec_::AbstractMatrix{<:Number})
-    return 0;
+       norminf_mat = 0
+    m, n = size(vec_)
+    for i in m
+        sum = 0
+        for j in n
+            sum += vec_[i,j]
+        end
+        if sum > norminf_mat
+            norminf_mat = sum
+        end
+    end
+    return norminf_mat;
 end
 
 function isleap(year)
