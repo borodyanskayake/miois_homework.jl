@@ -22,15 +22,29 @@ function touppercase(str_)
 end
 
 function firstnorm(vec_::AbstractVector{<:Number})
-    return 0;
+    norm1_vec = 0
+    for i in vec_
+        norm1_vec += abs(i)
+    end
+    return norm1_vec;
 end
 
 function secondnorm(vec_::AbstractVector{<:Number})
-    return 0;
+    norm2_vec = 0
+    for i in vec_
+        norm2_vec += i^2
+    end
+    return norm2_vec^0.5;
 end
 
 function infnorm(vec_::AbstractVector{<:Number})
-    return 0;
+    norminf_vec = 0
+    for i in vec_
+        if abs(i) > norminf_vec
+            norminf_vec = i
+        end
+    end
+    return norminf_vec;
 end
 
 function firstnorm(vec_::AbstractMatrix{<:Number})
