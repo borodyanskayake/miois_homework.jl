@@ -1,16 +1,24 @@
 export getdigits, touppercase, firstnorm, secondnorm, infnorm, isleap, chesscolor
 
 function getdigits(a)
-    digits_mass = [];
+    digits_mass = []
     while a != 0
-        push!(digits_mass, a % 10);
-        a = a // 10
+        push!(digits_mass, a % 10)
+        a = div(a, 10)
     end
-    return digits_mass[end:-1:1]
+    return digits_mass[end:-1:1];
 end
 
 function touppercase(str_)
-    return 0;
+    str_mass = []
+    for i in str_
+        if (i >= 'a') && (i <= 'z')
+            push!(str_mass, i + ('A' - 'a'))
+        else
+            push!(str_mass, i)
+        end
+    end
+    return join(str_mass);
 end
 
 function firstnorm(vec_::AbstractVector{<:Number})
@@ -34,13 +42,18 @@ function infnorm(vec_::AbstractMatrix{<:Number})
 end
 
 function isleap(year)
-    if (year % 4 == 0 && year % 100 != 0) || year % 400 == 0
-        return true
+    if (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)
+        return true;
     else
-        return false
+        return false;
     end
 end
 
 function chesscolor(cell1, cell2)
-    return false;
+    kluch = Dict('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5, 'f' => 6, 'g' => 7, 'h' => 8)
+    if ((kluch[cell1[1]] + kluch[cell2[1]] + cell1[2] + cell2[2]) % 2) == 0 
+        return true;
+    else
+        return false;
+    end
 end
